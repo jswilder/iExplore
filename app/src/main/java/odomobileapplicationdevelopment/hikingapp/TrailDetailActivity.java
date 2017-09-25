@@ -16,9 +16,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class TrailDetailActivity extends AppCompatActivity {
 
-    // @BindView(R.id.respone_text) TextView text;
+    @BindView(R.id.response_text) TextView textView;
 
     private static final String ADVENTURE_LIST_TAG = "Trail_List";
 
@@ -33,6 +36,8 @@ public class TrailDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trail_detail);
 
+        ButterKnife.bind(this);
+
             // Confirm I'm passing data throught the intent - Sanity check
         Bundle bundle = getIntent().getExtras();
         Log.e(ADVENTURE_LIST_TAG,bundle.getString("HIKING"));
@@ -43,10 +48,10 @@ public class TrailDetailActivity extends AppCompatActivity {
         Response.Listener listener = new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                TextView text = (TextView) findViewById(R.id.respone_text);
+                //TextView text = (TextView) findViewById(R.id.respone_text);
                 //text.setText("Response is " + response.toString());
                 trails = (ArrayList<Trail>) Helpers.parseJSON(response);
-                text.setText( String.valueOf(trails.toString()));
+                textView.setText( String.valueOf(trails.toString()));
             }
         };
 
@@ -54,7 +59,7 @@ public class TrailDetailActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                TextView text = (TextView) findViewById(R.id.respone_text);
+                TextView text = (TextView) findViewById(R.id.response_text);
                 text.setText("Response is " + error.toString());
             }
         };
