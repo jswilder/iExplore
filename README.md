@@ -12,7 +12,7 @@ Uses ButterKnife to bind views ( http://jakewharton.github.io/butterknife/ )
 
 Icons from https://icons8.com/
 
-[Home page Screenshot](iExplore/HomeScreen.png)
+[Home page Screenshot](/HomeScreen.png)
 
 
-[Search page Screeshot](iExplore/SearchScreen.png)
+[Search page Screeshot](/SearchScreen.png)
