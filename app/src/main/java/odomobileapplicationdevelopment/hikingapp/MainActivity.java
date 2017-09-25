@@ -24,4 +24,28 @@ public class MainActivity extends AppCompatActivity {
     public void goSwimming(View view){
         Toast.makeText(this,"LETS GO SWIMMING!",Toast.LENGTH_SHORT).show();
     }
+
+    public void goCanoeing(View view){
+        Toast.makeText(this,"LETS GO CANOEING!",Toast.LENGTH_SHORT).show();
+    }
+
+    public void goClimbing(View view){
+        Toast.makeText(this,"LETS GO CLIMBING!",Toast.LENGTH_SHORT).show();
+    }
+
+    public void goCycling(View view){
+        Toast.makeText(this,"LETS GO CYCLING!",Toast.LENGTH_SHORT).show();
+    }
+
+    public void goCaving(View view){
+        Toast.makeText(this,"LETS GO CAVING!",Toast.LENGTH_SHORT).show();
+    }
+
+    public void goUSA(View view){
+        Toast.makeText(this,"LETS GO HIKE THE USA!",Toast.LENGTH_SHORT).show();
+    }
+
+    public void goCanada(View view){
+        Toast.makeText(this,"LETS GO TO CANADA!",Toast.LENGTH_SHORT).show();
+    }
 }
