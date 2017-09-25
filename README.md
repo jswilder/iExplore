@@ -12,4 +12,7 @@ Uses ButterKnife to bind views ( http://jakewharton.github.io/butterknife/ )
 
 Icons from https://icons8.com/
 
-[Icon](app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
+[Home page Screenshot](iExplore/HomeScreen.png)
+
+
+[Search page Screeshot](iExplore/SearchScreen.png)
