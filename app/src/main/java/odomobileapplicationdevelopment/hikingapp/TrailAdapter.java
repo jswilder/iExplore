@@ -40,8 +40,8 @@ public class TrailAdapter extends ArrayAdapter {
 
         view = layoutInflater.inflate(R.layout.trail_list_item, null);
 
-        TextView recipeName = (TextView) view.findViewById(R.id.park_name_text);
-        TextView recipeIngredients = (TextView) view.findViewById(R.id.park_details_text);
+        TextView name = (TextView) view.findViewById(R.id.park_name_text);
+        TextView description = (TextView) view.findViewById(R.id.park_details_text);
 
         ImageView image = image = (ImageView) view.findViewById(R.id.park_thumbnail);
 
@@ -54,9 +54,21 @@ public class TrailAdapter extends ArrayAdapter {
                     .error(R.drawable.burger).into(image);*/
         }
 
-        recipeIngredients.setText(String.valueOf( trail.getName() ));
-        recipeName.setText( String.valueOf( trail.getDescription() ));
+        String n = trail.getName();
+        String c = trail.getCity();
+        String s = trail.getState();
 
+        if( n != null){
+            name.setText(n);
+        } else {
+            name.setText("Beautiful Park");
+        }
+
+        if( c != null && s != null ){
+            description.setText(c + ", " + s);
+        } else{
+            description.setText("City, State");
+        }
         return view;
     }
 }
