@@ -1,5 +1,6 @@
 package odomobileapplicationdevelopment.hikingapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void goHiking(View view){
         Toast.makeText(this,"LETS GO HIKING!",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,TrailDetailActivity.class);
+        intent.putExtra("HIKING","We are going hiking");
+        startActivity(intent);
     }
 
     public void goSwimming(View view){
