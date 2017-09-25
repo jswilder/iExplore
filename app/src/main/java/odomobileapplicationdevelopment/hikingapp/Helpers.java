@@ -1,16 +1,5 @@
 package odomobileapplicationdevelopment.hikingapp;
 
-import android.util.Log;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
 /**
  * Created by j on 9/25/17.
  * helper functions for parsing and url creation
@@ -72,24 +61,5 @@ public class Helpers {
         ret.append(mAPI_Key);
 
         return ret.toString();
-    }
-
-    public static ArrayList<Trail> parseJSON(JSONObject root){
-        ArrayList<Trail> list = new ArrayList<>();
-
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-        try {
-            JSONArray array = root.getJSONArray("places");
-            for( int i = 0; i<array.length(); i++ ){
-                String data = array.getJSONObject(i).toString();
-                Trail trail = gson.fromJson(data,Trail.class);
-                Log.e("PARSER: ",trail.toString());
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return list;
     }
 }

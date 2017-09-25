@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05"
+        app:layout_constraintGuide_percent="0.025"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="32dp" />
 
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95"
+        app:layout_constraintGuide_percent="0.975"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="288dp" />
 
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.05"
+        app:layout_constraintGuide_percent="0.0"
         tools:layout_editor_absoluteY="22dp"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95"
+        app:layout_constraintGuide_percent="0.975"
         tools:layout_editor_absoluteY="430dp"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -49,6 +49,7 @@
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginTop="0dp"
+        android:elevation="4dp"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
         app:layout_constraintRight_toLeftOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top"
