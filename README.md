@@ -11,3 +11,5 @@ Parses the object using GSON ( https://github.com/google/gson )
 Uses ButterKnife to bind views ( http://jakewharton.github.io/butterknife/ )
 
 Icons from https://icons8.com/
+
+![Alt text](iExplore/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?raw=true "iExplore")
