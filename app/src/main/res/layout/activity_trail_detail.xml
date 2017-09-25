@@ -11,18 +11,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1"
+        app:layout_constraintGuide_percent="0.05"
         tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="48dp" />
+        tools:layout_editor_absoluteX="32dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9"
+        app:layout_constraintGuide_percent="0.95"
         tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="272dp" />
+        tools:layout_editor_absoluteX="288dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_top"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.05"
-        tools:layout_editor_absoluteY="45dp"
+        tools:layout_editor_absoluteY="22dp"
         tools:layout_editor_absoluteX="0dp" />
 
     <android.support.constraint.Guideline
@@ -39,21 +39,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.95"
-        tools:layout_editor_absoluteY="407dp"
+        tools:layout_editor_absoluteY="430dp"
         tools:layout_editor_absoluteX="0dp" />
 
-    <TextView
-        android:id="@+id/response_text"
+    <ListView
+        android:id="@+id/trails_list_View"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_bottom"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
         app:layout_constraintRight_toLeftOf="@+id/guideline_right"
-        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
+        app:layout_constraintTop_toTopOf="@+id/guideline_top"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_bottom" />
 
 </android.support.constraint.ConstraintLayout>

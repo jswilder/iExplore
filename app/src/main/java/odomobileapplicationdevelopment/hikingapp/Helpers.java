@@ -10,7 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by j on 9/25/17.
@@ -75,7 +74,7 @@ public class Helpers {
         return ret.toString();
     }
 
-    public static List<Trail> parseJSON(JSONObject root){
+    public static ArrayList<Trail> parseJSON(JSONObject root){
         ArrayList<Trail> list = new ArrayList<>();
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();

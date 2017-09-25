@@ -3,7 +3,9 @@ package odomobileapplicationdevelopment.hikingapp;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -21,13 +23,15 @@ import butterknife.ButterKnife;
 
 public class TrailDetailActivity extends AppCompatActivity {
 
-    @BindView(R.id.response_text) TextView textView;
+    @BindView(R.id.trails_list_View) ListView listView;
 
     private static final String ADVENTURE_LIST_TAG = "Trail_List";
 
     private static RequestQueue volley;
 
     private static final String CompleteURL = "https://trailapi-trailapi.p.mashape.com/?limit=25&q[activities_activity_type_name_eq]=mountain+biking&q[city_cont]=Denver&q[country_cont]=United+States&q[state_cont]=Colorado&radius=25&mashape-key=41R1FzuE3KmshQ2IQIBWeJsySdeCp1FtHHAjsn4g6sAhMBpClE";
+
+    ArrayAdapter<Trail> mAdapter;
 
     private ArrayList<Trail> trails = new ArrayList<>();
 
@@ -37,6 +41,12 @@ public class TrailDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_trail_detail);
 
         ButterKnife.bind(this);
+
+        mAdapter = new TrailAdapter(this, R.layout.trail_list_item, trails);
+
+        listView.setAdapter(mAdapter);
+
+        // Todo add on click to go to park url
 
             // Confirm I'm passing data throught the intent - Sanity check
         Bundle bundle = getIntent().getExtras();
@@ -48,19 +58,14 @@ public class TrailDetailActivity extends AppCompatActivity {
         Response.Listener listener = new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                //TextView text = (TextView) findViewById(R.id.respone_text);
-                //text.setText("Response is " + response.toString());
-                trails = (ArrayList<Trail>) Helpers.parseJSON(response);
-                textView.setText( String.valueOf(trails.toString()));
+                mAdapter.addAll( Helpers.parseJSON(response) );
             }
         };
 
         Response.ErrorListener errorListener = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
-                TextView text = (TextView) findViewById(R.id.response_text);
-                text.setText("Response is " + error.toString());
+                Toast.makeText(getApplicationContext(),"Error retrieving data :(",Toast.LENGTH_SHORT).show();
             }
         };
 
