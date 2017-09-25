@@ -9,8 +9,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class TrailDetailActivity extends AppCompatActivity {
 
@@ -19,9 +23,10 @@ public class TrailDetailActivity extends AppCompatActivity {
     private static final String ADVENTURE_LIST_TAG = "Trail_List";
 
     private static RequestQueue volley;
-    private static String mURL = "https://trailapi-trailapi.p.mashape.com/";
 
-    private final String CompleteURL = "https://trailapi-trailapi.p.mashape.com/?limit=25&q[activities_activity_type_name_eq]=mountain+biking&q[city_cont]=Denver&q[country_cont]=United+States&q[state_cont]=Colorado&radius=25&mashape-key=41R1FzuE3KmshQ2IQIBWeJsySdeCp1FtHHAjsn4g6sAhMBpClE";
+    private static final String CompleteURL = "https://trailapi-trailapi.p.mashape.com/?limit=25&q[activities_activity_type_name_eq]=mountain+biking&q[city_cont]=Denver&q[country_cont]=United+States&q[state_cont]=Colorado&radius=25&mashape-key=41R1FzuE3KmshQ2IQIBWeJsySdeCp1FtHHAjsn4g6sAhMBpClE";
+
+    private ArrayList<Trail> trails = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,21 +40,28 @@ public class TrailDetailActivity extends AppCompatActivity {
             // Volley stuff
         volley = Volley.newRequestQueue(this);
 
-        StringRequest request = new StringRequest(Request.Method.GET, CompleteURL, new Response.Listener<String>() {
+        Response.Listener listener = new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(String response) {
+            public void onResponse(JSONObject response) {
                 TextView text = (TextView) findViewById(R.id.respone_text);
-                text.setText("Response is " + response.toString());
+                //text.setText("Response is " + response.toString());
+                trails = (ArrayList<Trail>) Helpers.parseJSON(response);
+                text.setText( String.valueOf(trails.toString()));
             }
-        }, new Response.ErrorListener() {
+        };
+
+        Response.ErrorListener errorListener = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                TextView text = (TextView) findViewById(R.id.respone_text);
-                text.setText(error.toString());
-            }
-        });
 
-        volley.add(request);
+                TextView text = (TextView) findViewById(R.id.respone_text);
+                text.setText("Response is " + error.toString());
+            }
+        };
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,CompleteURL,null,listener,errorListener);
+
+        volley.add(jsonObjectRequest);
     }
 
     @Override

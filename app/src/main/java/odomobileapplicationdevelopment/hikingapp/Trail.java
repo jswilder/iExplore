@@ -1,5 +1,8 @@
 package odomobileapplicationdevelopment.hikingapp;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,18 +10,57 @@ import java.util.List;
  */
 
 public class Trail {
+    @SerializedName("city")
     private String city;
+    @SerializedName("state")
     private String state;
+    @SerializedName("country")
     private String country;
+    @SerializedName("name")
     private String name;
+    @SerializedName("unique_id")
     private String unique_id;
     private String lat;
     private String lon;
+    @SerializedName("description")
     private String description;
+    @SerializedName("url")
     private String url;
+    @SerializedName("activities")
     private List<Activities> activities;
 
-    Trail(){ ; }
+    @Override
+    public String toString() {
+        return "Trail{" +
+                "city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", country='" + country + '\'' +
+                ", name='" + name + '\'' +
+                ", unique_id='" + unique_id + '\'' +
+                ", lat='" + lat + '\'' +
+                ", lon='" + lon + '\'' +
+                ", description='" + description + '\'' +
+                ", url='" + url + '\'' +
+                ", activities=" + activities +
+                '}';
+    }
+
+    public Trail(){
+        activities = new ArrayList<>();
+    }
+
+    public Trail(String city, String state, String country, String name, String unique_id, String lat, String lon, String description, String url, List<Activities> activities) {
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.name = name;
+        this.unique_id = unique_id;
+        this.lat = lat;
+        this.lon = lon;
+        this.description = description;
+        this.url = url;
+        this.activities = activities;
+    }
 
     public String getCity() {
         return city;
