@@ -5,4 +5,6 @@ Uses Volley ( https://github.com/google/volley ) GET request to retrieve a JSON 
 
 Parses the object using GSON ( https://github.com/google/gson )
 
+Uses ButterKnife to bind views ( http://jakewharton.github.io/butterknife/ )
+
 Icons from https://icons8.com/
