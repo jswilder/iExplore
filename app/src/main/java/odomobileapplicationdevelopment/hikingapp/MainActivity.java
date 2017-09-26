@@ -11,21 +11,23 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+
+    @BindView(R.id.button_USA) ImageButton USA;
+    @BindView(R.id.button_CAN) ImageButton CAN;
+
+    @BindView(R.id.spinner_State_Province) Spinner states;
+    @BindView(R.id.spinner_Activity) Spinner activity;
 
     private String STATE = "";
     private String COUNTRY = "United States";
     private String CITY = "";
     private String ACTIVITY = "";
 
-    private ImageButton USA;
-    private ImageButton CAN;
-
     private boolean USA_Selected = true;
-
-    private Spinner states;
-    private Spinner activity;
-
     ArrayAdapter<CharSequence> state_adapter;
 
     @Override
@@ -33,8 +35,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        USA = (ImageButton) findViewById(R.id.button_USA);
-        CAN = (ImageButton) findViewById(R.id.button_CAN);
+        ButterKnife.bind(this);
 
         USA.setColorFilter(Color.parseColor("#002868"));
 
@@ -52,18 +53,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void goExploring(View view){
+            // Put state/country/activity into intent extras
         Toast.makeText(this,"LETS GO EXPLORING!",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this,TrailDetailActivity.class);
         intent.putExtra("EXPLORING","We are going exploring");
         startActivity(intent);
-    }
-
-    public void goUSA(View view){
-        Toast.makeText(this,"LETS GO HIKE THE USA!",Toast.LENGTH_SHORT).show();
-    }
-
-    public void goCanada(View view){
-        Toast.makeText(this,"LETS GO TO CANADA!",Toast.LENGTH_SHORT).show();
     }
 
     public void switchToUSA(View view){
