@@ -23,7 +23,6 @@
             android:name=".TrailDetailActivity"
             android:label="Adventure Details"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".SearchDetails"></activity>
     </application>
 
 </manifest>
