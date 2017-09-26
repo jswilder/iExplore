@@ -1,7 +1,12 @@
 package odomobileapplicationdevelopment.hikingapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -48,6 +53,24 @@ public class TrailDetailActivity extends AppCompatActivity {
         mAdapter = new TrailAdapter(this, R.layout.trail_list_item, new ArrayList<Trail>());
 
         listView.setAdapter(mAdapter);
+
+            // Pulled from documentation
+                // https://developer.android.com/guide/components/intents-common.html#Browser
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Trail trail = (Trail)mAdapter.getItem(i);
+                String url = trail.getActivities().get(0).getUrl();
+                if(url != null){
+                    Log.e("ON_CLICK_WEB",url);
+                    Uri webpage = Uri.parse(url);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+                    if( intent.resolveActivity(getPackageManager()) != null){
+                        startActivity(intent);
+                    }
+                }
+            }
+        });
 
             // Retrieve Values
         Bundle bundle = getIntent().getExtras();
@@ -103,7 +126,7 @@ public class TrailDetailActivity extends AppCompatActivity {
                 String data = array.getJSONObject(i).toString();
                 Trail trail = gson.fromJson(data,Trail.class);
                 mAdapter.add(trail);
-                //Log.e("PARSER: ",trail.toString());
+                Log.e("PARSER: ",trail.toString());
             }
 
         } catch (JSONException e) {

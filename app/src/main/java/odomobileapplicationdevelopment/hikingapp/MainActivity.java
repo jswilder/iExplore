@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ACTIVITY = ((String)adapterView.getItemAtPosition(i)).toLowerCase();
-                if( ACTIVITY.contentEquals("Any")){
+                if( ACTIVITY.contentEquals("any")){
                     ACTIVITY = "";
                 }
             }
@@ -88,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
     public void goExploring(View view){
             // Put state/country/activity into intent extras
 
-        String data = COUNTRY + ", " + STATE + " ," + ACTIVITY;
-        Toast.makeText(this,String.valueOf("LETS GO EXPLORING!\n" + data),Toast.LENGTH_SHORT).show();
+/*        String data = COUNTRY + ", " + STATE + " ," + ACTIVITY;
+        Toast.makeText(this,String.valueOf("LETS GO EXPLORING!\n" + data),Toast.LENGTH_SHORT).show();*/
 
         Intent intent = new Intent(this,TrailDetailActivity.class);
         intent.putExtra("EXPLORING","We are going exploring");
