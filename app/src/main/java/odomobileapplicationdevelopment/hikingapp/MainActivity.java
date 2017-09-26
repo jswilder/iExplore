@@ -27,10 +27,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void goSwimming(View view){
         Toast.makeText(this,"LETS GO SWIMMING!",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,SearchDetails.class);
+        startActivity(intent);
     }
 
     public void goCanoeing(View view){
         Toast.makeText(this,"LETS GO CANOEING!",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,SearchDetails.class);
+        startActivity(intent);
     }
 
     public void goClimbing(View view){
