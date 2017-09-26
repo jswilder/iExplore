@@ -56,7 +56,7 @@ public class TrailDetailActivity extends AppCompatActivity {
 
             // Confirm I'm passing data throught the intent - Sanity check
         Bundle bundle = getIntent().getExtras();
-        Log.e(ADVENTURE_LIST_TAG,bundle.getString("HIKING"));
+        Log.e(ADVENTURE_LIST_TAG,bundle.getString("EXPLORING"));
 
             // Volley stuff
         volley = Volley.newRequestQueue(this);

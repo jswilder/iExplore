@@ -1,78 +1,61 @@
 package odomobileapplicationdevelopment.hikingapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+
+    private String STATE = "";
+    private String COUNTRY = "United States";
+    private String CITY = "";
+    private String ACTIVITY = "";
+
+    private ImageButton USA;
+    private ImageButton CAN;
+
+    private boolean USA_Selected = true;
+
+    private Spinner states;
+    private Spinner activity;
+
+    ArrayAdapter<CharSequence> state_adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Spinner countries = (Spinner) findViewById(R.id.spinner_Country);
-        Spinner states = (Spinner) findViewById(R.id.spinner_State_Province);
-        Spinner activity = (Spinner) findViewById(R.id.spinner_Activity);
+        USA = (ImageButton) findViewById(R.id.button_USA);
+        CAN = (ImageButton) findViewById(R.id.button_CAN);
 
-        ArrayAdapter<CharSequence> country_adapter = ArrayAdapter.createFromResource(this,R.array.countries,R.layout.support_simple_spinner_dropdown_item);
-        country_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        USA.setColorFilter(Color.parseColor("#002868"));
 
-        ArrayAdapter<CharSequence> state_adapter = ArrayAdapter.createFromResource(this,R.array.states_provinces,R.layout.support_simple_spinner_dropdown_item);
+        states = (Spinner) findViewById(R.id.spinner_State_Province);
+        activity = (Spinner) findViewById(R.id.spinner_Activity);
+
+        state_adapter = ArrayAdapter.createFromResource(this,R.array.state_names,R.layout.support_simple_spinner_dropdown_item);
         state_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
         ArrayAdapter<CharSequence> activity_adapter = ArrayAdapter.createFromResource(this,R.array.activities,R.layout.support_simple_spinner_dropdown_item);
         activity_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
-/*        countries.setOnItemClickListener((AdapterView.OnItemClickListener) this);
-
-        states.setOnItemClickListener((AdapterView.OnItemClickListener) this);
-
-        activity.setOnItemClickListener((AdapterView.OnItemClickListener) this);*/
-
-        countries.setAdapter(country_adapter);
         states.setAdapter(state_adapter);
         activity.setAdapter(activity_adapter);
     }
 
-    public void goCamping(View view){
-        Toast.makeText(this,"LETS GO CAMPING!",Toast.LENGTH_SHORT).show();
-    }
-
-    public void goHiking(View view){
-        Toast.makeText(this,"LETS GO HIKING!",Toast.LENGTH_SHORT).show();
+    public void goExploring(View view){
+        Toast.makeText(this,"LETS GO EXPLORING!",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this,TrailDetailActivity.class);
-        intent.putExtra("HIKING","We are going hiking");
+        intent.putExtra("EXPLORING","We are going exploring");
         startActivity(intent);
-    }
-
-    public void goSpecific(View view){
-        Toast.makeText(this,"LETS GO SWIMMING!",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this,SearchDetails.class);
-        startActivity(intent);
-    }
-
-    public void goCanoeing(View view){
-        Toast.makeText(this,"LETS GO CANOEING!",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this,SearchDetails.class);
-        startActivity(intent);
-    }
-
-    public void goClimbing(View view){
-        Toast.makeText(this,"LETS GO CLIMBING!",Toast.LENGTH_SHORT).show();
-    }
-
-    public void goCycling(View view){
-        Toast.makeText(this,"LETS GO CYCLING!",Toast.LENGTH_SHORT).show();
-    }
-
-    public void goCaving(View view){
-        Toast.makeText(this,"LETS GO CAVING!",Toast.LENGTH_SHORT).show();
     }
 
     public void goUSA(View view){
@@ -81,6 +64,31 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void goCanada(View view){
         Toast.makeText(this,"LETS GO TO CANADA!",Toast.LENGTH_SHORT).show();
+    }
+
+    public void switchToUSA(View view){
+     //   Toast.makeText(this,"Switch Country - USA",Toast.LENGTH_SHORT).show();
+        if( !USA_Selected){
+            // Highlight USA
+            USA.setColorFilter(Color.parseColor("#002868"));
+            CAN.setColorFilter(Color.BLACK);
+        }
+
+        USA_Selected = true;
+        state_adapter = ArrayAdapter.createFromResource(this,R.array.state_names,R.layout.support_simple_spinner_dropdown_item);
+        states.setAdapter(state_adapter);
+    }
+
+    public void switchToCANADA(View view){
+       // Toast.makeText(this,"Switch Country - CANADA",Toast.LENGTH_SHORT).show();
+        if(USA_Selected){
+            // Highlight Canada
+            CAN.setColorFilter(Color.RED);
+            USA.setColorFilter(Color.BLACK);
+        }
+        USA_Selected = false;
+        state_adapter = ArrayAdapter.createFromResource(this,R.array.canada_provinces,R.layout.support_simple_spinner_dropdown_item);
+        states.setAdapter(state_adapter);
     }
 
     @Override
