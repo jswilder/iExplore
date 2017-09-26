@@ -12,6 +12,8 @@ Uses ButterKnife to bind views ( http://jakewharton.github.io/butterknife/ )
 
 Icons from https://icons8.com/
 
+SCREENSHOTS
+
 [Home Screen - USA](/iExplore_Home_search_USA.png)
 
 [Home Screen - Canada](/iExplore_Home_search_Canada.png)
@@ -19,4 +21,4 @@ Icons from https://icons8.com/
 [Search page Screeshot](/iExlore_search_results.png)
 
 
-[*OLD* Home page Screenshot](/HomeScreen.png)
+[*Old* Home page Screenshot](/HomeScreen.png)
