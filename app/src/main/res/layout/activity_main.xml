@@ -44,23 +44,6 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:text="State"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_state_bottom"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
-        app:layout_constraintRight_toLeftOf="@+id/guideline_category_divider"
-        app:layout_constraintTop_toTopOf="@+id/guideline_country_bottom" />
-
-    <TextView
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -69,41 +52,38 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="Activity"
+        android:text=" Activity"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_activity_bottom"
-        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_state_bottom"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
         app:layout_constraintRight_toLeftOf="@+id/guideline_category_divider"
-        app:layout_constraintTop_toTopOf="@+id/guideline_state_bottom"
-        app:layout_constraintVertical_bias="0.485" />
+        app:layout_constraintTop_toTopOf="@+id/guideline_country_bottom" />
 
-    <Spinner
+    <android.support.v7.widget.AppCompatSpinner
         android:id="@+id/spinner_State_Province"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/guideline_image_bottom"
+        android:layout_marginTop="8dp"
+        app:layout_constraintRight_toLeftOf="@+id/guideline_right"
+        android:layout_marginRight="8dp"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_category_divider"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_country_bottom" />
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/spinner_Activity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@+id/guideline_country_bottom"
         android:layout_marginTop="8dp"
         app:layout_constraintRight_toLeftOf="@+id/guideline_right"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_state_bottom"
-        app:layout_constraintVertical_bias="0.571" />
-
-    <Spinner
-        android:id="@+id/spinner_Activity"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/guideline_state_bottom"
-        android:layout_marginTop="8dp"
-        app:layout_constraintRight_toLeftOf="@+id/guideline_right"
-        android:layout_marginRight="8dp"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_category_divider"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_activity_bottom" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline_state_bottom" />
 
     <ImageButton
         android:id="@+id/button_USA"
@@ -183,7 +163,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75"
+        app:layout_constraintGuide_percent="0.81"
         />
 
     <android.support.design.widget.FloatingActionButton
@@ -196,15 +176,38 @@
         android:layout_marginTop="8dp"
         android:clickable="true"
         app:elevation="4dp"
-        app:fabSize="mini"
+        app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@+id/guideline_bottom"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline_middle"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline_fab_left"
         app:layout_constraintRight_toLeftOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_activity_bottom"
-        app:layout_constraintVertical_bias="0.485"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_hiking"
         android:onClick="goExploring"
         />
+
+    <TextView
+        android:id="@+id/textView_state_province"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="States"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_country_bottom"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
+        app:layout_constraintRight_toLeftOf="@+id/guideline_category_divider"
+        app:layout_constraintTop_toTopOf="@+id/guideline_image_bottom" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline_fab_left"
+        app:layout_constraintGuide_percent="0.68"
+        android:orientation="vertical" />
 
 </android.support.constraint.ConstraintLayout>
