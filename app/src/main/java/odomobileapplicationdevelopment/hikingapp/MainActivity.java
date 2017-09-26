@@ -1,5 +1,6 @@
 package odomobileapplicationdevelopment.hikingapp;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private String CITY = "";
     private String ACTIVITY = "";
 
-    private boolean USA_Selected = true;
+    private boolean USA_Selected;
     ArrayAdapter<CharSequence> state_adapter;
     ArrayAdapter<CharSequence> activity_adapter;
 
@@ -40,7 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+            // We start with USA as the default area
         USA.setColorFilter(Color.parseColor("#002868"));
+        USA_Selected = true;
 
         state_adapter = ArrayAdapter.createFromResource(this,R.array.state_names,R.layout.support_simple_spinner_dropdown_item);
         state_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         activity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                ACTIVITY = (String)adapterView.getItemAtPosition(i);
+                ACTIVITY = ((String)adapterView.getItemAtPosition(i)).toLowerCase();
                 if( ACTIVITY.contentEquals("Any")){
                     ACTIVITY = "";
                 }
@@ -87,9 +90,16 @@ public class MainActivity extends AppCompatActivity {
 
         String data = COUNTRY + ", " + STATE + " ," + ACTIVITY;
         Toast.makeText(this,String.valueOf("LETS GO EXPLORING!\n" + data),Toast.LENGTH_SHORT).show();
-        //Intent intent = new Intent(this,TrailDetailActivity.class);
-        //intent.putExtra("EXPLORING","We are going exploring");
-        //startActivity(intent);
+
+        Intent intent = new Intent(this,TrailDetailActivity.class);
+        intent.putExtra("EXPLORING","We are going exploring");
+
+        intent.putExtra("COUNTRY",COUNTRY);
+        intent.putExtra("STATE",STATE);
+        intent.putExtra("CITY",CITY);
+        intent.putExtra("ACTIVITY",ACTIVITY);
+
+        startActivity(intent);
     }
 
     public void switchToUSA(View view){
@@ -120,13 +130,4 @@ public class MainActivity extends AppCompatActivity {
         state_adapter = ArrayAdapter.createFromResource(this,R.array.canada_provinces,R.layout.support_simple_spinner_dropdown_item);
         states.setAdapter(state_adapter);
     }
-
-    /*
-        Spinner spinner = (Spinner) adapterView;
-        if(spinner.getId() == states.getId()){
-            STATE = (String)adapterView.getItemAtPosition(i);
-        } else {
-            ACTIVITY = (String)adapterView.getItemAtPosition(i);
-        }
-     */
 }

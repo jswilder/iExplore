@@ -34,10 +34,12 @@ public class TrailDetailActivity extends AppCompatActivity {
 
     private static RequestQueue volley;
 
-/*
-    private static final String CompleteURL = "https://trailapi-trailapi.p.mashape.com/?limit=25&q[activities_activity_type_name_eq]=mountain+biking&q[city_cont]=Denver&q[country_cont]=United+States&q[state_cont]=Colorado&radius=25&mashape-key=41R1FzuE3KmshQ2IQIBWeJsySdeCp1FtHHAjsn4g6sAhMBpClE";
-*/
     private static final String CompleteURL = "https://trailapi-trailapi.p.mashape.com/?limit=25&q[activities_activity_type_name_eq]=mountain+biking&q[country_cont]=United+States&radius=25&mashape-key=41R1FzuE3KmshQ2IQIBWeJsySdeCp1FtHHAjsn4g6sAhMBpClE";
+
+    private String STATE = "";
+    private String COUNTRY = "";
+    private String CITY = "";
+    private String ACTIVITY = "";
 
     TrailAdapter mAdapter;
 
@@ -52,11 +54,12 @@ public class TrailDetailActivity extends AppCompatActivity {
 
         listView.setAdapter(mAdapter);
 
-        // Todo add on click to go to park url
-
-            // Confirm I'm passing data throught the intent - Sanity check
+            // Retrieve Values
         Bundle bundle = getIntent().getExtras();
-        Log.e(ADVENTURE_LIST_TAG,bundle.getString("EXPLORING"));
+        COUNTRY = bundle.getString("COUNTRY");
+        STATE = bundle.getString("STATE");
+        CITY = bundle.getString("CITY");
+        ACTIVITY = bundle.getString("ACTIVITY");
 
             // Volley stuff
         volley = Volley.newRequestQueue(this);
@@ -65,11 +68,8 @@ public class TrailDetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 parseJSON(response);
-                //mAdapter.addAll( Helpers.parseJSON(response) );
-                //Toast.makeText(getApplicationContext(),Helpers.parseJSON(response).toString(),Toast.LENGTH_SHORT).show();
             }
         };
-
         Response.ErrorListener errorListener = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -77,10 +77,10 @@ public class TrailDetailActivity extends AppCompatActivity {
             }
         };
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,CompleteURL,null,listener,errorListener);
-        jsonObjectRequest.setTag(KILL_TAG);
-
-        volley.add(jsonObjectRequest);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,Helpers.buildUrl(CITY,STATE,COUNTRY,ACTIVITY,5)
+                ,null,listener,errorListener);
+        request.setTag(KILL_TAG);
+        volley.add(request);
     }
 
     @Override
