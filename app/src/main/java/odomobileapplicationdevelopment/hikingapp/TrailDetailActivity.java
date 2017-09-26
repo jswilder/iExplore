@@ -2,7 +2,6 @@ package odomobileapplicationdevelopment.hikingapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,11 +29,7 @@ public class TrailDetailActivity extends AppCompatActivity {
 
     private static final String KILL_TAG = "JsonRequestTag";
 
-    private static final String ADVENTURE_LIST_TAG = "Trail_List";
-
     private static RequestQueue volley;
-
-    private static final String CompleteURL = "https://trailapi-trailapi.p.mashape.com/?limit=25&q[activities_activity_type_name_eq]=mountain+biking&q[country_cont]=United+States&radius=25&mashape-key=41R1FzuE3KmshQ2IQIBWeJsySdeCp1FtHHAjsn4g6sAhMBpClE";
 
     private String STATE = "";
     private String COUNTRY = "";
@@ -98,8 +93,6 @@ public class TrailDetailActivity extends AppCompatActivity {
     }
 
     public void parseJSON(JSONObject root){
-        ArrayList<Trail> list = new ArrayList<>();
-
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         mAdapter.clear();
@@ -110,8 +103,7 @@ public class TrailDetailActivity extends AppCompatActivity {
                 String data = array.getJSONObject(i).toString();
                 Trail trail = gson.fromJson(data,Trail.class);
                 mAdapter.add(trail);
-                Log.e("PARSER: ",trail.toString());
-                Log.e("COUNT", String.valueOf(mAdapter.getCount()));
+                //Log.e("PARSER: ",trail.toString());
             }
 
         } catch (JSONException e) {

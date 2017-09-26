@@ -57,7 +57,7 @@ public class Helpers {
             ret.append(mRadius+radius);
         }
 
-        // Always append key!
+        // Always append key! It's needed to get API access
         ret.append(mAPI_Key);
 
         return ret.toString();
