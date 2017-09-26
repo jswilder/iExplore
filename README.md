@@ -12,7 +12,10 @@ Uses ButterKnife to bind views ( http://jakewharton.github.io/butterknife/ )
 
 Icons from https://icons8.com/
 
-[Home page Screenshot](/HomeScreen.png)
+[Home Screen - USA](/iExplore_Home_search_USA.png)
+[Home Screen - Canada](/iExplore_Home_search_Canada.png)
+
+[Search page Screeshot](/iExlore_search_results.png)
 
 
-[Search page Screeshot](/SearchScreen.png)
+[*OLD* Home page Screenshot](/HomeScreen.png)
